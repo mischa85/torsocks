@@ -468,6 +468,26 @@ static LIBC_SYSCALL_RET_TYPE handle_getdents64(va_list args)
 	return tsocks_libc_syscall(TSOCKS_NR_GETDENTS64, fd, dirp, count);
 }
 
+/*
+ * Handle get_mempolicy(2) syscall.
+ */
+static LIBC_SYSCALL_RET_TYPE handle_get_mempolicy(va_list args)
+{
+        int *mode;
+        unsigned long *nodemask;
+        unsigned long maxnode;
+        void *addr;
+	unsigned long flags;
+
+        mode = va_arg(args, __typeof__(mode));
+        nodemask = va_arg(args, __typeof__(nodemask));
+        maxnode = va_arg(args, __typeof__(maxnode));
+        addr = va_arg(args, __typeof__(addr));
+        flags = va_arg(args, __typeof__(flags));
+
+        return tsocks_libc_syscall(TSOCKS_NR_GET_MEMPOLICY, mode, nodemask, maxnode, addr, flags);
+}
+
 #endif /* __linux__ */
 
 /*
