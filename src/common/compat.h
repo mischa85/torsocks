@@ -135,6 +135,10 @@ void tsocks_once(tsocks_once_t *o, void (*init_routine)(void));
 #ifndef __NR_getdents64
 #define __NR_getdents64 -21
 #endif
+#ifndef __NR_get_mempolicy
+#define __NR_get_mempolicy -22
+#endif
+
 
 #define TSOCKS_NR_SOCKET    __NR_socket
 #define TSOCKS_NR_CONNECT   __NR_connect
@@ -157,6 +161,7 @@ void tsocks_once(tsocks_once_t *o, void (*init_routine)(void));
 #define TSOCKS_NR_MEMFD_CREATE __NR_memfd_create
 #define TSOCKS_NR_GETDENTS __NR_getdents
 #define TSOCKS_NR_GETDENTS64 __NR_getdents64
+#define TSOCKS_NR_GET_MEMPOLICY __NR_get_mempolicy
 
 /*
  * Despite glibc providing wrappers for these calls for a long time
